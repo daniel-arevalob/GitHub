@@ -1,0 +1,43 @@
+/* ═══════════════════════════════════════════════
+   IronQx Clinical & Performance Coaching
+   02-base — Reset, Body, @keyframes, Splash, Skeleton, Screen, Scroll
+   AUTO-EXTRACTED — safe to edit individually
+═══════════════════════════════════════════════ */
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--txt);font-family:"Barlow",-apple-system,system-ui,sans-serif;font-size:14px;line-height:1.5;height:100%;overflow:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;user-select:none}
+
+/* SPLASH */
+#splash{position:fixed;inset:0;z-index:2000;background:#030609;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .7s ease;overflow:hidden}
+#splash.hide{opacity:0;pointer-events:none}
+#sp-ecg{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.22;pointer-events:none}
+#sp-center{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+#sp-logo{width:100px;height:78px;opacity:0;filter:drop-shadow(0 0 40px rgba(212,146,14,.6)) drop-shadow(0 0 14px rgba(212,146,14,.35));transition:opacity .5s ease,transform .5s ease;transform:scale(.84) translateY(10px)}
+#sp-logo.show{opacity:1;transform:scale(1) translateY(0)}
+#sp-tag{font-family:"Inter",sans-serif;font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(212,146,14,.65);margin-top:10px;opacity:0;transition:opacity .5s .18s ease}
+#sp-tag.show{opacity:1}
+#sp-ver{font-family:"Inter",sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;opacity:0;transition:opacity .5s .32s ease}
+#sp-ver.show{opacity:1}
+#sp-bar{display:none}
+
+/* ANIM */
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse-ring{0%,100%{box-shadow:0 0 0 0 rgba(212,146,14,.4)}50%{box-shadow:0 0 0 10px rgba(212,146,14,0)}}
+@keyframes glow-pulse{0%,100%{opacity:.6}50%{opacity:1}}
+@keyframes bounce-in{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.fu{animation:fu .4s ease both}
+.fu1{animation-delay:.06s}.fu2{animation-delay:.12s}.fu3{animation-delay:.18s}.fu4{animation-delay:.24s}.fu5{animation-delay:.30s}
+
+/* SKELETON LOADER */
+@keyframes skeleton-sweep{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel{display:inline-block;border-radius:5px;background:linear-gradient(90deg,var(--bg3) 25%,var(--bg4) 50%,var(--bg3) 75%);background-size:200% 100%;animation:skeleton-sweep 1.5s ease-in-out infinite}
+
+/* SCREENS */
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .24s cubic-bezier(.32,1,.36,1),transform .24s cubic-bezier(.32,1,.36,1);transform:translateX(10px) scale(.99)}
+.screen.active{opacity:1;pointer-events:all;transform:translateX(0) scale(1)}
+
+/* SCROLL */
+.scroll{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:14px 14px calc(84px + var(--safe-b,0px))}
+.scroll::-webkit-scrollbar{display:none}

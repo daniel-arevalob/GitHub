@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="IRONQx">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#080a0d">
+<meta name="description" content="Tu protocolo de entrenamiento y nutrición personalizado — IRONQx Clinical & Performance">
+<title>IronQx Clinical &amp; Performance Coaching</title>
+
+<!-- ░ PWA Manifest ░ -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+
+<!-- ░ Fonts ░ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ░ CSS Modules ░ -->
+<link rel="stylesheet" href="css/01-tokens.css?v=202603101552">
+<link rel="stylesheet" href="css/02-base.css?v=202603101552">
+<link rel="stylesheet" href="css/03-layout.css?v=202603101552">
+<link rel="stylesheet" href="css/04-components.css?v=202603101552">
+<link rel="stylesheet" href="css/05-screens.css?v=202603101552">
+
+</head>
+<body>
+<div class="bgtx"></div>
+<div class="grain"></div>
+
+<!-- SPLASH -->
+<div id="splash">
+  <canvas id="sp-ecg"></canvas>
+  <div id="sp-center">
+    <svg id="sp-logo" viewBox="0 0 92 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+  <defs>
+    <linearGradient id="spsi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#8a96a8"/>
+    </linearGradient>
+    <linearGradient id="spgo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2c84a"/>
+      <stop offset="55%" stop-color="#d4920e"/>
+      <stop offset="100%" stop-color="#7a4e06"/>
+    </linearGradient>
+    <linearGradient id="specg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9eaab8" stop-opacity="0.3"/>
+      <stop offset="28%" stop-color="#e8edf2"/>
+      <stop offset="58%" stop-color="#d4920e"/>
+      <stop offset="100%" stop-color="#9a6508" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <text x="2" y="42" font-family="'Barlow Condensed',sans-serif" font-size="46" font-weight="900" fill="url(#spsi)">I</text>
+  <text x="20" y="42" font-family="'Barlow Condensed',sans-serif" font-size="46" font-weight="900" letter-spacing="-1" fill="url(#spgo)">QX</text>
+  <polyline points="2,50 14,50 16,47 18,50 23,50 25,53 28,38 32,56 35,50 90,50"
+    stroke="url(#specg)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+  </svg>
+    <div id="sp-tag">Clinical &amp; Performance Coaching</div>
+    <div id="sp-ver">Plataforma Privada · v1.0</div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span id="t-ic" class="iq-ic gold lg" style="flex-shrink:0"></span><span id="t-tx" style="flex:1;font-size:13px;font-weight:700"></span></div>
+
+<!-- PIN SCREEN -->
+<div id="pin-screen">
+  <svg id="pin-logo" viewBox="0 0 92 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:110px;height:67px;margin-bottom:8px;overflow:visible;filter:drop-shadow(0 0 22px rgba(212,146,14,.35))">
+  <defs>
+    <linearGradient id="plsi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#8a96a8"/>
+    </linearGradient>
+    <linearGradient id="plgo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2c84a"/>
+      <stop offset="55%" stop-color="#d4920e"/>
+      <stop offset="100%" stop-color="#7a4e06"/>
+    </linearGradient>
+    <linearGradient id="plecg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9eaab8" stop-opacity="0.3"/>
+      <stop offset="28%" stop-color="#e8edf2"/>
+      <stop offset="58%" stop-color="#d4920e"/>
+      <stop offset="100%" stop-color="#9a6508" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <text x="2" y="42" font-family="'Barlow Condensed',sans-serif" font-size="46" font-weight="900" fill="url(#plsi)">I</text>
+  <text x="20" y="42" font-family="'Barlow Condensed',sans-serif" font-size="46" font-weight="900" letter-spacing="-1" fill="url(#plgo)">QX</text>
+  <polyline points="2,50 14,50 16,47 18,50 23,50 25,53 28,38 32,56 35,50 90,50"
+    stroke="url(#plecg)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+  </svg>
+  <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:4px;text-transform:uppercase;margin-bottom:4px"><span style="background:linear-gradient(135deg,#9eaab8,#ffffff,#b0bcc8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">IRON</span><span style="background:linear-gradient(135deg,#f2c84a,#d4920e,#9a6508);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">QX</span></div>
+  <div class="pin-brand-slogan">Clinical &amp; Performance Coaching</div>
+  <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px" id="pin-title">Acceso rápido</div>
+  <div style="font-size:12px;color:var(--muted);margin-bottom:28px;text-align:center" id="pin-sub">Ingresa tu PIN de 4 dígitos</div>
+  <div class="pin-dots"><div class="pd" id="pd0"></div><div class="pd" id="pd1"></div><div class="pd" id="pd2"></div><div class="pd" id="pd3"></div></div>
+  <div class="pin-grid">
+    <div class="pk" onpointerdown="pkPrevent(event)" onclick="pkPress('1')"><span class="pk-n">1</span></div>
+    <div class="pk" onpointerdown="pkPrevent(event)" onclick="pkPress('2')"><span class="pk-n">2</span><span class="pk-l">ABC</span></div>
+    <div class="pk" onpointerdown="pkPrevent(event)" onclick="pkPress('3')"><span class="pk-n">3</span><span class="pk-l">DEF</span></div>
+    <div class="pk" onpointerdown="pkPrevent(event)" onclick="pkPress('4')"><span class="pk-n">4</span><span class="pk-l">GHI</span></div>
+    <div class="pk" onpointerdown="pkPrevent(event)" onclick="pkPress('5')"><span class="pk-n">5</span><span class="pk-l">JKL</span></div>
+    <div class="pk" onpointerdown="pkPrevent(event)" onclick="pkPress('6')"><span class="pk-n">6</span><span class="pk-l">MNO</span></div>
+    <div class="pk" onpointerdown="pkPrevent(event)" onclick="pkPress('7')"><span class="pk-n">7</span><span class="pk-l">PQRS</span></div>
+    <div class="pk" onpointerdown="pkPrevent(event)" onclick="pkPress('8')"><span class="pk-n">8</span><span class="pk-l">TUV</span></div>
+    <div class="pk" onpointerdown="pkPrevent(event)" onclick="pkPress('9')"><span class="pk-n">9</span><span class="pk-l">WXYZ</span></div>
+    <div class="pk" style="opacity:.15;pointer-events:none"></div>
+    <div class="pk" onpointerdown="pkPrevent(event)" onclick="pkPress('0')"><span class="pk-n">0</span></div>
+    <div class="pk" onpointerdown="pkPrevent(event)" onclick="pkDel()"><span class="iq-ic lg muted" data-ic="delete-left"></span></div>
+  </div>
+  <button id="bio-btn" onclick="bioAuth()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04.054-.09A13.916 13.916 0 0 0 8 11a4 4 0 1 1 8 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0 0 15.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 0 0 8 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
+    Usar biometría / Face ID
+  </button>
+  <div style="font-size:12px;color:var(--muted);margin-top:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px" id="pin-skip" onclick="pinSkip()">Usar contraseña normal</div>
+</div>
+
+<!-- PHOTO VIEWER -->
+<div id="pv-over">
+  <div id="pv-close" onclick="closePV()"><span class="iq-ic" data-ic="close"></span></div>
+  <img id="pv-img" src="" alt="">
+  <div id="pv-lbl">—</div>
+</div>
+
+<!-- ████ ONBOARDING ████ -->
+<div id="onb-overlay" style="position:fixed;inset:0;z-index:1800;display:none;flex-direction:column;background:linear-gradient(170deg,#060c12 0%,#040a10 55%,#030709 100%);align-items:center;justify-content:center;padding:32px 24px">
+  <div id="onb-glow" style="position:absolute;top:8%;left:50%;transform:translateX(-50%);width:380px;height:260px;border-radius:50%;background:radial-gradient(ellipse,rgba(212,146,14,.09) 0%,transparent 70%);pointer-events:none"></div>
+  <!-- Logo -->
+  <svg style="width:90px;height:auto;margin-bottom:6px;filter:drop-shadow(0 0 22px rgba(212,146,14,.4))" viewBox="0 0 92 56" fill="none" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+    <defs><linearGradient id="oblmsi" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#8a96a8"/></linearGradient><linearGradient id="oblmgo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f2c84a"/><stop offset="55%" stop-color="#d4920e"/><stop offset="100%" stop-color="#7a4e06"/></linearGradient><linearGradient id="oblmecg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#9eaab8" stop-opacity="0.3"/><stop offset="28%" stop-color="#e8edf2"/><stop offset="58%" stop-color="#d4920e"/><stop offset="100%" stop-color="#9a6508" stop-opacity="0.25"/></linearGradient></defs>
+    <text x="2" y="42" font-family="'Barlow Condensed',sans-serif" font-size="46" font-weight="900" fill="url(#oblmsi)">I</text>
+    <text x="20" y="42" font-family="'Barlow Condensed',sans-serif" font-size="46" font-weight="900" letter-spacing="-1" fill="url(#oblmgo)">QX</text>
+    <polyline points="2,50 14,50 16,47 18,50 23,50 25,53 28,38 32,56 35,50 90,50" stroke="url(#oblmecg)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+  </svg>
+  <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,146,14,.55);margin-bottom:32px">Clinical &amp; Performance Coaching</div>
+
+  <!-- Slides -->
+  <div id="onb-slides" style="width:100%;max-width:340px;position:relative;min-height:220px;display:flex;align-items:center;justify-content:center">
+    <div class="onb-slide active" data-slide="0">
+      <div class="onb-slide-icon" style="background:linear-gradient(145deg,rgba(212,146,14,.18),rgba(212,146,14,.05));border-color:rgba(212,146,14,.25);color:var(--gold)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:36px"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+      </div>
+      <div class="onb-slide-title">Tu plan, siempre contigo</div>
+      <div class="onb-slide-sub">Accede a tu protocolo de nutrición, entrenamiento y suplementación en cualquier momento.</div>
+    </div>
+    <div class="onb-slide" data-slide="1">
+      <div class="onb-slide-icon" style="background:linear-gradient(145deg,rgba(46,171,101,.18),rgba(46,171,101,.05));border-color:rgba(46,171,101,.25);color:var(--green)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:36px"><path d="M4 19h16"/><path d="M7 15V9"/><path d="M12 15V5"/><path d="M17 15v-3"/></svg>
+      </div>
+      <div class="onb-slide-title">Registra tu progreso</div>
+      <div class="onb-slide-sub">Lleva el control de tu peso, composición corporal y fotos de evolución semana a semana.</div>
+    </div>
+    <div class="onb-slide" data-slide="2">
+      <div class="onb-slide-icon" style="background:linear-gradient(145deg,rgba(85,119,238,.18),rgba(85,119,238,.05));border-color:rgba(85,119,238,.25);color:var(--blue)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:36px"><path d="M7 4h10a2 2 0 0 1 2 2v12l-4-3H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
+      </div>
+      <div class="onb-slide-title">Reporte semanal</div>
+      <div class="onb-slide-sub">Cada domingo entrega tu reporte y recibe retroalimentación directa del Dr. Arévalo.</div>
+    </div>
+    <div class="onb-slide" data-slide="3">
+      <div class="onb-slide-icon" style="background:linear-gradient(145deg,rgba(153,102,221,.18),rgba(153,102,221,.05));border-color:rgba(153,102,221,.25);color:var(--purple)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:36px"><path d="M12 3 5 6v5c0 5 3.4 8.3 7 10 3.6-1.7 7-5 7-10V6l-7-3Z"/></svg>
+      </div>
+      <div class="onb-slide-title">Acceso privado y seguro</div>
+      <div class="onb-slide-sub">Esta plataforma es exclusiva para pacientes de IronQx. Tu información clínica está protegida.</div>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div style="display:flex;gap:8px;margin:22px 0 28px">
+    <div class="onb-dot active" data-dot="0"></div>
+    <div class="onb-dot" data-dot="1"></div>
+    <div class="onb-dot" data-dot="2"></div>
+    <div class="onb-dot" data-dot="3"></div>
+  </div>
+
+  <!-- CTA -->
+  <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:10px">
+    <button id="onb-next" onclick="onbNext()" style="width:100%;padding:15px;border:none;border-radius:14px;cursor:pointer;background:linear-gradient(135deg,#b07a0c 0%,#d4920e 45%,#f0b429 100%);font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;color:#050505;box-shadow:0 8px 24px rgba(212,146,14,.25);transition:all .18s cubic-bezier(.32,1,.36,1)">Siguiente</button>
+    <button id="onb-skip" onclick="onbFinish()" style="background:none;border:none;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(82,87,106,.6);cursor:pointer;padding:4px">Omitir introducción</button>
+  </div>
+</div>
+
+<!-- ████ LOGIN ████ -->
+<div class="screen" id="scr-login">
+
+  <!-- Brand Hero -->
+  <div class="login-brand">
+
+    <!-- Provisional inline SVG logo mark -->
+    <svg class="login-logomark" viewBox="0 0 92 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+  <defs>
+    <linearGradient id="lmsi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#8a96a8"/>
+    </linearGradient>
+    <linearGradient id="lmgo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2c84a"/>
+      <stop offset="55%" stop-color="#d4920e"/>
+      <stop offset="100%" stop-color="#7a4e06"/>
+    </linearGradient>
+    <linearGradient id="lmecg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9eaab8" stop-opacity="0.3"/>
+      <stop offset="28%" stop-color="#e8edf2"/>
+      <stop offset="58%" stop-color="#d4920e"/>
+      <stop offset="100%" stop-color="#9a6508" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <text x="2" y="42" font-family="'Barlow Condensed',sans-serif" font-size="46" font-weight="900" fill="url(#lmsi)">I</text>
+  <text x="20" y="42" font-family="'Barlow Condensed',sans-serif" font-size="46" font-weight="900" letter-spacing="-1" fill="url(#lmgo)">QX</text>
+  <polyline points="2,50 14,50 16,47 18,50 23,50 25,53 28,38 32,56 35,50 90,50"
+    stroke="url(#lmecg)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+  </svg>
+
+    <div class="login-brand-slogan">Clinical &amp; Performance Coaching</div>
+    <div class="login-brand-doctor">Dr. Daniel Arévalo</div>
+  </div>
+
+  <!-- Form Card -->
+  <div class="login-card">
+    <div class="login-card-eyebrow">Bienvenido</div>
+    <div class="login-card-title">Iniciar sesión</div>
+
+    <!-- form real para que Safari/Chrome puedan guardar credenciales -->
+    <form class="login-form" id="login-form" onsubmit="event.preventDefault();doLogin()" autocomplete="on">
+      <div class="field">
+        <label class="flbl" for="i-user">Usuario</label>
+        <div class="field-wrap">
+          <div class="field-icon"><span class="iq-ic" data-ic="user"></span></div>
+          <input type="text" id="i-user" name="username" placeholder=" "
+            autocorrect="off" autocapitalize="none" autocomplete="username" spellcheck="false">
+        </div>
+      </div>
+      <div class="field">
+        <label class="flbl" for="i-pass">Contraseña</label>
+        <div class="field-wrap">
+          <div class="field-icon"><span class="iq-ic" data-ic="key"></span></div>
+          <input type="password" id="i-pass" name="password" placeholder=" "
+            autocorrect="off" autocapitalize="off" autocomplete="current-password"
+            style="padding-right:46px">
+          <button type="button" id="pass-eye" onclick="togglePassVis()"
+            style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;padding:4px;cursor:pointer;color:var(--muted);line-height:1;display:flex;align-items:center"
+            tabindex="-1" aria-label="Mostrar contraseña">
+            <span class="iq-ic" data-ic="eye" id="pass-eye-ic" style="width:17px;height:17px"></span>
+          </button>
+        </div>
+      </div>
+      <button class="login-cta" type="submit" id="login-btn">Ingresar</button>
+    </form>
+
+    <div class="login-footer">
+      <div class="login-footer-brand">
+        <span class="lf-iron">IRON</span><span class="lf-qx">QX</span>
+      </div>
+      <div class="login-footer-copy">Clinical &amp; Performance Coaching</div>
+      <div class="login-footer-legal">© 2026 IronQx · Dr. Daniel Arévalo · Todos los derechos reservados</div>
+      <div class="login-footer-legal" style="margin-top:3px;opacity:.55">Plataforma privada — acceso exclusivo para pacientes activos</div>
+    </div>
+  </div>
+
+</div>
+<!-- ████ PATIENT HOME ████ -->
+<div class="screen" id="scr-home">
+  <div class="topbar">
+    <svg class="tb-logo" viewBox="0 0 58 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+  <defs>
+    <linearGradient id="tb1si" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#8a96a8"/>
+    </linearGradient>
+    <linearGradient id="tb1go" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2c84a"/>
+      <stop offset="55%" stop-color="#d4920e"/>
+      <stop offset="100%" stop-color="#7a4e06"/>
+    </linearGradient>
+    <linearGradient id="tb1ecg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9eaab8" stop-opacity="0.3"/>
+      <stop offset="28%" stop-color="#e8edf2"/>
+      <stop offset="58%" stop-color="#d4920e"/>
+      <stop offset="100%" stop-color="#9a6508" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <text x="1" y="22" font-family="'Barlow Condensed',sans-serif" font-size="24" font-weight="900" fill="url(#tb1si)">I</text>
+  <text x="13" y="22" font-family="'Barlow Condensed',sans-serif" font-size="24" font-weight="900" letter-spacing="-1" fill="url(#tb1go)">QX</text>
+  <polyline points="1,26 8,26 9,24 11,26 14,26 15,28 17,20 19,30 21,26 56,26"
+    stroke="url(#tb1ecg)" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+  </svg>
+    <div><div class="tb-wm"><span style="background:linear-gradient(135deg,#9eaab8,#ffffff,#b0bcc8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">IRON</span><span style="background:linear-gradient(135deg,#f2c84a,#d4920e,#9a6508);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">QX</span></div><div class="tb-sub">Clinical &amp; Performance Coaching</div></div>
+    <div class="tb-r">
+      <button type="button" class="ibtn" id="trophy-btn" onclick="showM('m-logros')"><span class="iq-ic" data-ic="trophy"></span><div class="dot-badge" id="trophy-dot"></div></button>
+      <button type="button" class="ibtn" id="notif-btn" onclick="showM('m-notif')"><span class="iq-ic" data-ic="bell"></span><div class="dot-badge" id="notif-dot"></div></button>
+      <button type="button" class="ibtn" onclick="showM('m-profile')"><span class="iq-ic" data-ic="user"></span></button>
+      <button type="button" class="ibtn" onclick="openSettings()"><span class="iq-ic" data-ic="settings"></span></button>
+    </div>
+  </div>
+  <div class="scroll">
+
+    <!-- ── HERO ── -->
+    <div class="hero fu fu1">
+      <div class="av av-xl" id="hero-av">?</div>
+      <div class="f1">
+        <div class="hero-name" id="hero-name">—</div>
+        <div class="hero-goal" id="hero-goal">—</div>
+        <div class="hero-meta" id="hero-meta">—</div>
+      </div>
+    </div>
+
+    <div id="motiv-counter" style="margin-bottom:4px"></div>
+    <div id="pay-bar"></div>
+    <div id="report-banner-home" style="display:none"></div>
+
+    <!-- ── STATS ── -->
+    <div class="sl fu fu2" style="margin-top:14px"><span class="iq-ic" data-ic="activity"></span>Estado del plan</div>
+    <div class="sg c2 fu fu2">
+      <div class="sc g" style="position:relative">
+        <div class="su" style="margin-bottom:4px;margin-top:0">Peso actual</div>
+        <div class="sv" id="st-peso">—</div>
+        <div class="su" style="margin-top:3px">kg</div>
+        <canvas id="sparkline-home" style="position:absolute;bottom:-4px;left:4px;right:4px;width:calc(100% - 8px);height:28px;opacity:.55;pointer-events:none"></canvas>
+      </div>
+      <div class="sc">
+        <div class="su" style="margin-bottom:4px;margin-top:0">En el plan</div>
+        <div class="sv" style="color:var(--txt)" id="st-dias">0</div>
+        <div class="su" style="margin-top:3px">días</div>
+      </div>
+    </div>
+    <div class="sg c3 fu fu3">
+      <div class="sc">
+        <div class="su" style="margin-bottom:4px;margin-top:0">Semana</div>
+        <div class="sv" style="font-size:28px;color:var(--silver)" id="st-sem">1</div>
+        <div class="su" style="margin-top:3px">actual</div>
+      </div>
+      <div class="sc">
+        <div class="su" style="margin-bottom:4px;margin-top:0">Próx. CP</div>
+        <div class="sv" style="font-size:28px;color:var(--amber)" id="st-cp">4</div>
+        <div class="su" style="margin-top:3px">semana</div>
+      </div>
+      <div class="sc">
+        <div class="su" style="margin-bottom:4px;margin-top:0">Adh. 7d</div>
+        <div class="sv" style="font-size:28px;color:var(--green)" id="st-adh">—</div>
+        <div class="su" style="margin-top:3px">adherencia</div>
+      </div>
+    </div>
+
+    <!-- ── ADHERENCIA ── -->
+    <div class="sl fu fu3"><span class="iq-ic" data-ic="check-circle"></span>Adherencia — últimos 7 días</div>
+    <div class="card fu fu3" style="border-radius:16px">
+      <div class="card-bd" style="padding-bottom:12px">
+        <div class="adh-g" id="adh-grid"></div>
+        <div id="streak-wrap"></div>
+        <div class="rowb mt6">
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <span class="fxs" style="color:var(--green);display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>Completo</span>
+            <span class="fxs" style="color:var(--gold);display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block"></span>Parcial</span>
+            <span class="fxs" style="color:var(--red);display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block"></span>No cumplido</span>
+          </div>
+          <span class="fsm tg fb" id="adh-pct">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── WEEKLY SUMMARY ── -->
+    <div id="week-sum-wrap"></div>
+
+    <!-- ── NAV CARDS ── -->
+    <div class="sl fu fu4"><span class="iq-ic" data-ic="spark"></span>Mi espacio</div>
+    <div class="home-nav-card gold fu fu4" onclick="goTab('plan')">
+      <div class="hnc-icon gold"><span class="iq-ic" data-ic="clipboard"></span></div>
+      <div class="hnc-body"><div class="hnc-title">Mi Plan</div><div class="hnc-sub">Nutrición · Entrenamiento · Suplementos</div></div>
+      <div class="hnc-live" id="hnc-plan-live"></div>
+      <div class="hnc-arr">›</div>
+    </div>
+    <div class="home-nav-card blue fu fu5" onclick="goTab('prog')">
+      <div class="hnc-icon blue"><span class="iq-ic" data-ic="chart"></span></div>
+      <div class="hnc-body"><div class="hnc-title">Mi Progreso</div><div class="hnc-sub">Peso · Evolución · Composición · Fotos</div></div>
+      <div class="hnc-live" id="hnc-prog-live"></div>
+      <div class="hnc-arr">›</div>
+    </div>
+    <div class="home-nav-card green fu fu5" onclick="goTab('reporte')">
+      <div class="hnc-icon green"><span class="iq-ic" data-ic="note"></span></div>
+      <div class="hnc-body"><div class="hnc-title">Reporte Semanal</div><div class="hnc-sub" id="home-rep-sub">Entrega tu reporte de la semana</div></div>
+      <div class="hnc-live" id="hnc-rep-live"></div>
+      <div class="hnc-arr">›</div>
+    </div>
+
+    <!-- ── CHECKPOINT ── -->
+    <div class="sl fu fu5"><span class="iq-ic" data-ic="target"></span>Próximo checkpoint</div>
+    <div class="fu fu5" style="background:linear-gradient(145deg,rgba(232,150,12,.1),rgba(232,150,12,.02));border:1px solid rgba(232,150,12,.2);border-radius:16px;padding:14px 15px;margin-bottom:10px;position:relative;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.25)">
+      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(232,150,12,.4),transparent)"></div>
+      <div class="rowb" style="margin-bottom:10px">
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--txt)" id="cp-name">CP-1 · Semana 4</div>
+          <div style="font-size:11px;color:var(--txt2);margin-top:3px" id="cp-desc">Foto + peso + fuerza base</div>
+        </div>
+        <div class="badge b-amber" style="flex-shrink:0">Próximo</div>
+      </div>
+      <div class="pgw" style="margin:0"><div class="pgl"><span style="color:var(--amber)">Sem <span id="cp-cur">1</span></span><span id="cp-tgt">Sem 4</span></div><div class="pgt" style="height:6px"><div class="pgf" id="cp-fill" style="width:0%;background:linear-gradient(90deg,var(--amber),#f0b429)"></div></div></div>
+    </div>
+
+    <!-- MACROS CARD (shown only if Dr set them) -->
+    <div id="macros-card-wrap"></div>
+  </div>
+</div>
+
+<!-- ████ PLAN VIEWER ████ -->
+<div class="screen" id="scr-plan">
+  <div id="plan-wrap">
+    <div class="plan-tb">
+      <div style="display:flex;flex-direction:column;gap:1px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--txt)">Mi Plan</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'Inter',sans-serif;letter-spacing:.5px" id="plan-ver-lbl">—</div>
+      </div>
+      <button id="plan-fs-btn" title="Pantalla completa" onclick="togglePlanFS()">
+        <span class="iq-ic" data-ic="expand"></span>
+      </button>
+    </div>
+    <div class="no-plan" id="no-plan">
+  <div style="width:80px;height:80px;border-radius:22px;background:linear-gradient(145deg,rgba(212,146,14,.1),rgba(212,146,14,.03));border:1.5px solid rgba(212,146,14,.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 24px rgba(0,0,0,.3)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="rgba(212,146,14,.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:36px"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+  </div>
+  <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;color:var(--txt)">Plan en preparación</div>
+  <div style="font-size:13px;color:var(--muted);line-height:1.75;max-width:260px">El Dr. Arévalo está preparando tu protocolo personalizado. Estará disponible muy pronto.</div>
+  <div style="margin-top:20px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(212,146,14,.4)">IronQx · Clinical &amp; Performance</div>
+</div>
+    <div class="plan-susp" id="plan-susp"><div class="ei" style="margin-bottom:12px;opacity:1"><span class="iq-ic xl red" data-ic="lock"></span></div><div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:8px">Plan suspendido</div><div style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:14px">Tu membresía no está activa.</div><div style="background:var(--red-bg);border:1px solid var(--red-brd);border-radius:var(--rs);padding:12px 14px;font-size:12px;color:#ffaaaa;line-height:1.75;text-align:center"><span class="iq-ic sm" data-ic="phone"></span> <b>Dr. Daniel Arévalo</b><br>Renueva tu membresía para retomar el plan</div></div>
+    <iframe id="plan-frame" sandbox="allow-scripts allow-same-origin"></iframe>
+
+    <!-- LINK CARD — visible cuando el plan es un URL externo (Supabase Storage) -->
+    <div id="plan-link-card" style="display:none;flex:1;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:22px;animation:_plcIn .4s cubic-bezier(.32,1,.36,1) both">
+      <style>
+        @keyframes _plcIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+        @keyframes _pulseGold{0%,100%{box-shadow:0 8px 32px rgba(212,146,14,.12),0 2px 8px rgba(0,0,0,.4)}50%{box-shadow:0 8px 40px rgba(212,146,14,.28),0 2px 8px rgba(0,0,0,.4)}}
+        @keyframes _rotateGlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+      </style>
+      <!-- Icono con glow animado -->
+      <div style="position:relative;width:100px;height:100px;display:flex;align-items:center;justify-content:center">
+        <!-- Anillo exterior pulsante -->
+        <div style="position:absolute;inset:-8px;border-radius:32px;border:1px solid rgba(212,146,14,.12);animation:_pulseGold 3s ease-in-out infinite"></div>
+        <!-- Icono principal -->
+        <div style="width:100px;height:100px;border-radius:28px;background:linear-gradient(145deg,rgba(212,146,14,.15),rgba(212,146,14,.04));border:1.5px solid rgba(212,146,14,.25);display:flex;align-items:center;justify-content:center;animation:_pulseGold 3s ease-in-out infinite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(212,146,14,.85)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="width:42px;height:42px"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+        </div>
+      </div>
+      <!-- Textos -->
+      <div style="text-align:center;display:flex;flex-direction:column;gap:8px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;color:var(--txt);line-height:1">Tu Plan Está Listo</div>
+        <div style="font-size:13px;color:var(--txt2);line-height:1.7;max-width:260px">El Dr. Arévalo ha preparado tu protocolo personalizado.</div>
+      </div>
+      <!-- Botón principal -->
+      <button id="plan-open-btn" style="display:flex;align-items:center;justify-content:center;gap:12px;width:100%;max-width:300px;padding:18px 24px;background:linear-gradient(135deg,rgba(212,146,14,.16) 0%,rgba(212,146,14,.08) 100%);border:1.5px solid rgba(212,146,14,.38);border-radius:18px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .15s,background .15s;box-shadow:0 4px 24px rgba(212,146,14,.12),0 1px 0 rgba(255,255,255,.04) inset" ontouchstart="this.style.transform='scale(.96)';this.style.background='linear-gradient(135deg,rgba(212,146,14,.26),rgba(212,146,14,.14))'" ontouchend="this.style.transform='';this.style.background='linear-gradient(135deg,rgba(212,146,14,.16),rgba(212,146,14,.08))'" onmousedown="this.style.transform='scale(.96)'" onmouseup="this.style.transform=''">
+        <div style="width:40px;height:40px;border-radius:12px;background:rgba(212,146,14,.15);border:1px solid rgba(212,146,14,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+        <div style="text-align:left">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);line-height:1">Abrir Mi Plan</div>
+          <div style="font-size:10px;color:rgba(212,146,14,.45);font-family:'Inter',sans-serif;letter-spacing:.5px;margin-top:3px">Protocolo personalizado IRONQx</div>
+        </div>
+      </button>
+      <!-- Botón secundario preview (plan-preview-btn — referenciado por JS) -->
+      <button id="plan-preview-btn" style="display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:rgba(212,146,14,.55);background:none;border:none;cursor:pointer;letter-spacing:.5px;padding:2px 0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="width:12px;height:12px"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+        Vista previa en pantalla completa
+      </button>
+      <!-- Firma -->
+      <div style="display:flex;align-items:center;gap:8px;opacity:.45">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" style="width:12px;height:12px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">IronQx · Clinical &amp; Performance</div>
+      </div>
+    </div>
+
+    <!-- Firma digital del plan — visible debajo del iframe antes de entrar a fullscreen -->
+    <div id="plan-signature" style="display:none;align-items:center;justify-content:space-between;padding:10px 16px;border-top:1px solid rgba(212,146,14,.1);background:rgba(8,10,13,.8)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="iq-ic sm" data-ic="shield" style="color:var(--gold);opacity:.7"></span>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:var(--txt2);font-family:'Inter',sans-serif;letter-spacing:.5px">Dr. Daniel Arévalo · IRONQx</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:1px">Entregado el <span class="plan-sig-date">—</span></div>
+        </div>
+      </div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:rgba(212,146,14,.3);letter-spacing:1px" class="plan-sig-ver"></div>
+    </div>
+  </div>
+  <!-- plan-fs-exit kept for CSS compat but hidden — portal has its own close btn -->
+  <button id="plan-fs-exit" title="Salir de pantalla completa" onclick="closePlanFS()" style="display:none!important"><span class="iq-ic" data-ic="close"></span></button>
+</div>
+
+<!-- ████ PROGRESS ████ -->
+<div class="screen" id="scr-prog">
+  <div class="topbar">
+    <div><div class="tb-wm" style="font-size:16px;letter-spacing:2px">Progreso</div><div class="tb-sub">Peso · Composición · Fotos</div></div>
+  </div>
+  <!-- FAB + Peso -->
+  <button class="prog-fab" onclick="showM('m-addprog')" aria-label="Registrar peso">
+    <span class="iq-ic" data-ic="weight" style="width:20px;height:20px"></span>
+    <span>+ Peso</span>
+  </button>
+  <div class="scroll">
+    <div id="prog-motiv-banner"></div>
+    <div class="sl"><span class="iq-ic" data-ic="chart"></span>Gráfica de peso</div>
+    <div class="card">
+      <div class="card-bd">
+        <canvas id="chart-main" style="width:100%;height:148px;display:block"></canvas>
+        <div class="sg c3 mt8" style="margin-bottom:0">
+          <div class="sc" style="padding:9px 7px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--gold)" id="ch-s">—</div><div class="su">inicio</div></div>
+          <div class="sc" style="padding:9px 7px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900" id="ch-d">—</div><div class="su">cambio</div></div>
+          <div class="sc g" style="padding:9px 7px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--gold)" id="ch-c">—</div><div class="su">actual</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- % GRASA EVOLUCIÓN — immediately after weight -->
+    <div class="sl" id="bc-hist-sl" style="display:none"><span class="iq-ic" data-ic="activity"></span>Evolución · % Grasa</div>
+    <div id="bc-hist-card" style="display:none">
+      <div class="card">
+        <div class="card-bd">
+          <canvas id="chart-gc" style="width:100%;height:120px;display:block"></canvas>
+          <div class="sg c3 mt8" style="margin-bottom:0">
+            <div class="sc" style="padding:9px 7px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--fat)" id="gc-s">—</div><div class="su">inicio</div></div>
+            <div class="sc" style="padding:9px 7px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900" id="gc-d">—</div><div class="su">cambio</div></div>
+            <div class="sc g" style="padding:9px 7px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--fat)" id="gc-c">—</div><div class="su">actual</div></div>
+          </div>
+        </div>
+      </div>
+      <div id="comp-snap-list"></div>
+    </div>
+
+    <!-- ░░ COMPOSICIÓN CORPORAL ░░ -->
+    <div class="sl"><span class="iq-ic" data-ic="activity"></span>Composición corporal</div>
+    <div class="bc-grid">
+      <div class="bc-card" id="bc-imc">
+        <div class="bc-val" id="bc-imc-val">—</div>
+        <div class="bc-unit">IMC</div>
+        <div class="bc-label">Índice de Masa</div>
+        <div class="bc-tag" id="bc-imc-tag">—</div>
+      </div>
+      <div class="bc-card" id="bc-gc">
+        <div class="bc-val" id="bc-gc-val">—</div>
+        <div class="bc-unit">%</div>
+        <div class="bc-label">Grasa Corporal</div>
+        <div class="bc-tag" id="bc-gc-tag">—</div>
+      </div>
+      <div class="bc-card" id="bc-mm">
+        <div class="bc-val" id="bc-mm-val">—</div>
+        <div class="bc-unit">kg</div>
+        <div class="bc-label">Masa Muscular</div>
+        <div class="bc-tag" id="bc-mm-tag">—</div>
+      </div>
+      <div class="bc-card" id="bc-mg">
+        <div class="bc-val" id="bc-mg-val">—</div>
+        <div class="bc-unit">kg</div>
+        <div class="bc-label">Masa Grasa</div>
+        <div class="bc-tag" id="bc-mg-tag">—</div>
+      </div>
+    </div>
+    <div class="bc-updated-ts" id="bc-ts"></div>
+
+
+    <!-- ANILLO DE ADHERENCIA TOTAL -->
+    <div class="sl"><span class="iq-ic" data-ic="check-circle"></span>Adherencia acumulada</div>
+    <div class="card">
+      <div class="card-bd" style="display:flex;align-items:center;gap:18px;padding:16px 14px">
+        <canvas id="chart-donut" width="110" height="110" style="flex-shrink:0;width:110px;height:110px"></canvas>
+        <div style="flex:1">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--gold)" id="donut-pct">—</div>
+          <div class="su mb8">adherencia total</div>
+          <div style="display:grid;gap:5px" id="donut-legend"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="month-heatmap-wrap"></div>
+
+    <div class="sl rowb" style="margin-top:4px">
+      <span><span class="iq-ic" data-ic="weight"></span>Registros de peso</span>
+      <span style="font-size:10px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:600;letter-spacing:0" id="prog-log-count"></span>
+    </div>
+    <div id="prog-log-list" style="margin-bottom:4px"></div>
+    <div class="sl"><span class="iq-ic" data-ic="camera"></span>Fotos de progreso</div>
+    <div id="ba-slider-wrap"></div>
+    <div id="fotos-list"></div>
+  </div>
+</div>
+
+<!-- ████ REPORTE SEMANAL ████ -->
+<div class="screen" id="scr-reporte">
+  <div class="topbar">
+    <div><div class="tb-wm" style="font-size:16px;letter-spacing:2px">Reporte</div><div class="tb-sub">Entrega semanal — Domingo</div></div>
+  </div>
+  <div class="scroll">
+    <div id="reporte-content"></div>
+  </div>
+</div>
+
+<!-- ████ LOGROS FULLSCREEN ████ -->
+<div class="screen" id="scr-logros">
+  <div class="topbar">
+    <button type="button" class="ibtn" onclick="closeLogros()"><span class="iq-ic" data-ic="arrow-left"></span></button>
+    <div style="flex:1;text-align:center">
+      <div class="tb-wm" style="font-size:14px;letter-spacing:2px">Logros</div>
+      <div class="tb-sub" id="logros-scr-sub">—</div>
+    </div>
+    <div style="width:36px"></div>
+  </div>
+  <div class="scroll" style="padding-bottom:30px">
+    <div id="logros-full-wrap" style="padding:0 2px"></div>
+  </div>
+</div>
+
+<!-- ████ ADMIN HOME ████ -->
+<div class="screen" id="scr-admin">
+  <div class="topbar">
+    <svg class="tb-logo" viewBox="0 0 58 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+  <defs>
+    <linearGradient id="tb2si" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#8a96a8"/></linearGradient>
+    <linearGradient id="tb2go" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f2c84a"/><stop offset="55%" stop-color="#d4920e"/><stop offset="100%" stop-color="#7a4e06"/></linearGradient>
+    <linearGradient id="tb2ecg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#9eaab8" stop-opacity="0.3"/><stop offset="28%" stop-color="#e8edf2"/><stop offset="58%" stop-color="#d4920e"/><stop offset="100%" stop-color="#9a6508" stop-opacity="0.25"/></linearGradient>
+  </defs>
+  <text x="1" y="22" font-family="'Barlow Condensed',sans-serif" font-size="24" font-weight="900" fill="url(#tb2si)">I</text>
+  <text x="13" y="22" font-family="'Barlow Condensed',sans-serif" font-size="24" font-weight="900" letter-spacing="-1" fill="url(#tb2go)">QX</text>
+  <polyline points="1,26 8,26 9,24 11,26 14,26 15,28 17,20 19,30 21,26 56,26" stroke="url(#tb2ecg)" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+  </svg>
+    <div><div class="tb-wm">Panel</div><div class="tb-sub">Dr. Daniel Arévalo</div></div>
+    <div class="tb-r">
+      <button class="btn btn-gold btn-sm" onclick="showM('m-newpt')">+ Paciente</button>
+      <button type="button" class="ibtn" onclick="showM('m-inbox')"><span class="iq-ic" data-ic="inbox"></span><div class="dot-badge" id="inbox-dot"></div></button>
+      <button type="button" class="ibtn" onclick="showM('m-drprofile')"><span class="iq-ic" data-ic="settings"></span></button>
+    </div>
+  </div>
+  <div class="scroll" style="padding-bottom:38px">
+
+    <!-- HERO -->
+    <div class="adm-hero fu fu1">
+      <div class="adm-hero-inner">
+        <div class="adm-hero-av">DA</div>
+        <div class="adm-hero-id">
+          <div class="adm-hero-eyebrow" id="adm-date"></div>
+          <div class="adm-hero-greet" id="adm-greet">Buenos días, Dr.</div>
+          <div class="adm-hero-sub" id="adm-status-lbl"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPI GRID -->
+    <div class="adm-kpis fu fu2">
+      <div class="adm-kpi" id="kpi-all" onclick="setFilterKpi('all','kpi-all','kpi-active-gold')">
+        <div class="adm-kpi-ic-row">
+          <div class="adm-kpi-ic c-gold"><span class="iq-ic sm gold" data-ic="users"></span></div>
+          <span style="font-family:'Inter',sans-serif;font-size:8px;color:var(--gold);letter-spacing:1px;text-transform:uppercase">Total</span>
+        </div>
+        <div class="adm-kpi-val" style="color:var(--gold)" id="a-tot">0</div>
+        <div class="adm-kpi-lbl">Pacientes</div>
+        <div class="adm-kpi-track"><div class="adm-kpi-fill" id="kpi-fill-tot" style="background:var(--gold);width:100%"></div></div>
+      </div>
+      <div class="adm-kpi" id="kpi-act" onclick="setFilterKpi('act','kpi-act','kpi-active-green')">
+        <div class="adm-kpi-ic-row">
+          <div class="adm-kpi-ic c-green"><span class="iq-ic sm green" data-ic="check-circle"></span></div>
+          <span style="font-family:'Inter',sans-serif;font-size:8px;color:var(--green);letter-spacing:1px;text-transform:uppercase">Activos</span>
+        </div>
+        <div class="adm-kpi-val" style="color:var(--green)" id="a-act">0</div>
+        <div class="adm-kpi-lbl">Con membresía</div>
+        <div class="adm-kpi-track"><div class="adm-kpi-fill" id="kpi-fill-act" style="background:var(--green);width:0%"></div></div>
+      </div>
+      <div class="adm-kpi" id="kpi-off" onclick="setFilterKpi('off','kpi-off','kpi-active-red')">
+        <div class="adm-kpi-ic-row">
+          <div class="adm-kpi-ic c-red"><span class="iq-ic sm red" data-ic="lock"></span></div>
+          <span style="font-family:'Inter',sans-serif;font-size:8px;color:var(--red);letter-spacing:1px;text-transform:uppercase">Vencidos</span>
+        </div>
+        <div class="adm-kpi-val" style="color:var(--red)" id="a-off">0</div>
+        <div class="adm-kpi-lbl">Sin acceso</div>
+        <div class="adm-kpi-track"><div class="adm-kpi-fill" id="kpi-fill-off" style="background:var(--red);width:0%"></div></div>
+      </div>
+      <div class="adm-kpi" id="kpi-rep" onclick="setFilterKpi('rep','kpi-rep','kpi-active-amber')">
+        <div class="adm-kpi-ic-row">
+          <div class="adm-kpi-ic c-amber"><span class="iq-ic sm amber" data-ic="inbox"></span></div>
+          <span style="font-family:'Inter',sans-serif;font-size:8px;color:var(--amber);letter-spacing:1px;text-transform:uppercase">Reportes</span>
+        </div>
+        <div class="adm-kpi-val" style="color:var(--amber)" id="a-pend-rep">0</div>
+        <div class="adm-kpi-lbl" id="kpi-rep-lbl">Pendientes</div>
+        <div class="adm-kpi-track"><div class="adm-kpi-fill" id="kpi-fill-rep" style="background:var(--amber);width:0%"></div></div>
+      </div>
+    </div>
+
+    <!-- Semáforo -->
+    <div id="semaforo-wrap" style="margin-bottom:12px"></div>
+
+    <!-- Pacientes -->
+    <div class="sl fu fu2"><span class="iq-ic" data-ic="users"></span>Mis pacientes</div>
+    <div class="pt-filters fu fu2" id="pt-filter-row">
+      <button type="button" class="pt-ftab on" data-filter="all" onclick="setFilter('all',this)">Todos</button>
+      <button type="button" class="pt-ftab f-act" data-filter="act" onclick="setFilter('act',this)">Activos</button>
+      <button type="button" class="pt-ftab f-rep" data-filter="rep" onclick="setFilter('rep',this)">Con reporte</button>
+      <button type="button" class="pt-ftab f-off" data-filter="off" onclick="setFilter('off',this)">Vencidos</button>
+    </div>
+    <div class="admin-search fu fu2">
+      <span class="srch-ic iq-ic" data-ic="search"></span>
+      <input type="text" id="pt-search" placeholder="Buscar paciente..." autocomplete="off" autocapitalize="none" oninput="filterPatients()">
+    </div>
+    <div id="pt-list"></div>
+  </div>
+</div>
+
+<!-- ████ ADMIN PATIENT DETAIL ████ -->
+<div class="screen" id="scr-ptd">
+  <div class="topbar">
+    <button type="button" class="ibtn" onclick="backAdmin()"><span class="iq-ic" data-ic="arrow-left"></span></button>
+    <div style="flex:1;text-align:center"><div class="tb-wm" style="font-size:14px;letter-spacing:2px" id="ptd-hd-name">Paciente</div><div class="tb-sub" id="ptd-hd-goal">—</div></div>
+    <button type="button" class="ibtn" onclick="showM('m-ptact')"><span class="iq-ic" data-ic="more"></span></button>
+  </div>
+  <div class="scroll" style="padding:0 0 calc(20px + var(--safe-b))">
+    <!-- Hero always visible -->
+    <div style="padding:14px 14px 0">
+    <div class="hero">
+      <div class="av av-lg" id="ptd-av">?</div>
+      <div class="f1"><div class="hero-name" id="ptd-name">—</div><div class="hero-goal" id="ptd-goal">—</div><div class="hero-meta" id="ptd-meta">—</div></div>
+
+    </div>
+    </div>
+
+    <!-- Tab bar -->
+    <div class="adm-tabs">
+      <button type="button" class="adm-tab on" id="atab-res" onclick="admTab('res')">
+        <span class="at-ic iq-ic sm" data-ic="activity"></span>Resumen
+      </button>
+      <button type="button" class="adm-tab" id="atab-rep" onclick="admTab('rep')">
+        <span class="at-ic iq-ic sm" data-ic="note"></span>Reportes
+      </button>
+      <button type="button" class="adm-tab" id="atab-plan" onclick="admTab('plan')">
+        <span class="at-ic iq-ic sm" data-ic="clipboard"></span>Plan
+      </button>
+      <button type="button" class="adm-tab" id="atab-cfg" onclick="admTab('cfg')">
+        <span class="at-ic iq-ic sm" data-ic="settings"></span>Ajustes
+      </button>
+    </div>
+
+    <!-- ░ TAB: RESUMEN ░ -->
+    <div class="adm-tp on" id="atp-res" style="padding:0 14px 14px">
+      <div class="sl" style="margin-top:16px"><span class="iq-ic" data-ic="credit"></span>Membresía</div>
+      <div id="ptd-pay"></div>
+      <div class="sl"><span class="iq-ic" data-ic="stethoscope"></span>Ficha clínica</div>
+      <div class="card"><div class="card-bd"><div id="ptd-ficha"></div><div style="height:8px"></div><button class="btn btn-ghost" onclick="showM('m-ficha')"><span class="iq-ic sm" data-ic="edit"></span> Editar medidas</button></div></div>
+      <div class="sl"><span class="iq-ic" data-ic="activity"></span>Composición corporal</div>
+      <div class="bc-grid" id="ptd-bc-grid">
+        <div class="bc-card" id="ptd-bc-imc"><div class="bc-val" id="ptd-bc-imc-val">—</div><div class="bc-unit">IMC</div><div class="bc-label">Índice de Masa</div><div class="bc-tag" id="ptd-bc-imc-tag">—</div></div>
+        <div class="bc-card" id="ptd-bc-gc"><div class="bc-val" id="ptd-bc-gc-val">—</div><div class="bc-unit">%</div><div class="bc-label">Grasa Corporal</div><div class="bc-tag" id="ptd-bc-gc-tag">—</div></div>
+        <div class="bc-card" id="ptd-bc-mm"><div class="bc-val" id="ptd-bc-mm-val">—</div><div class="bc-unit">kg</div><div class="bc-label">Masa Muscular</div><div class="bc-tag" id="ptd-bc-mm-tag">—</div></div>
+        <div class="bc-card" id="ptd-bc-mg"><div class="bc-val" id="ptd-bc-mg-val">—</div><div class="bc-unit">kg</div><div class="bc-label">Masa Grasa</div><div class="bc-tag" id="ptd-bc-mg-tag">—</div></div>
+      </div>
+      <div class="bc-updated-ts" id="ptd-bc-ts" style="margin-bottom:6px"></div>
+      <div class="sl"><span class="iq-ic" data-ic="chart"></span>Progreso de peso</div>
+      <div class="card"><div class="card-bd">
+        <canvas id="chart-adm" style="width:100%;height:148px;display:block"></canvas>
+        <div class="sg c3 mt8" style="margin-bottom:0">
+          <div class="sc" style="padding:9px 7px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--gold)" id="adm-ch-s">—</div><div class="su">inicio</div></div>
+          <div class="sc" style="padding:9px 7px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900" id="adm-ch-d">—</div><div class="su">cambio</div></div>
+          <div class="sc g" style="padding:9px 7px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--gold)" id="adm-ch-c">—</div><div class="su">actual</div></div>
+        </div>
+      </div></div>
+      <!-- Evolución %GC + tabla métricas cruzadas (visible solo si hay datos) -->
+      <div class="sl" id="adm-gc-sl" style="display:none"><span class="iq-ic" data-ic="activity"></span>Evolución · % Grasa</div>
+      <div id="adm-gc-card" style="display:none">
+        <div class="card"><div class="card-bd">
+          <canvas id="chart-gc-adm" style="width:100%;height:120px;display:block"></canvas>
+          <div class="sg c3 mt8" style="margin-bottom:0">
+            <div class="sc" style="padding:9px 7px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--fat)" id="adm-gc-s">—</div><div class="su">inicio</div></div>
+            <div class="sc" style="padding:9px 7px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900" id="adm-gc-d">—</div><div class="su">cambio</div></div>
+            <div class="sc g" style="padding:9px 7px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--fat)" id="adm-gc-c">—</div><div class="su">actual</div></div>
+          </div>
+        </div></div>
+        <div id="adm-comp-snap-list"></div>
+      </div>
+      <!-- Actividad reciente (timeline) — ANTES de adherencia, por lógica visual -->
+      <div class="sl" style="margin-top:4px"><span class="iq-ic" data-ic="activity"></span>Actividad reciente</div>
+      <div class="card"><div class="card-bd" style="padding:4px 0 2px" id="adm-timeline"></div></div>
+      <!-- Adherencia histórica 8 semanas -->
+      <div class="sl" style="margin-top:6px"><span class="iq-ic" data-ic="check-circle"></span>Adherencia · últimas 8 semanas</div>
+      <div class="card" id="adm-adh-hist-card"><div class="card-bd" id="adm-adh-hist"></div></div>
+    </div>
+
+    <!-- ░ TAB: REPORTES ░ -->
+    <div class="adm-tp" id="atp-rep" style="padding:0 14px 14px">
+      <div class="sl" style="margin-top:16px"><span class="iq-ic" data-ic="note"></span>Reportes semanales</div>
+      <div id="ptd-reportes"></div>
+      <div class="sl" style="margin-top:4px"><span class="iq-ic" data-ic="camera"></span>Fotos de progreso</div>
+      <div id="ptd-fotos"></div>
+    </div>
+
+    <!-- ░ TAB: PLAN ░ -->
+    <div class="adm-tp" id="atp-plan" style="padding:0 14px 14px">
+      <div class="sl rowb" style="cursor:pointer;margin-top:16px" onclick="showM('m-planvers')">
+        <span><span class="iq-ic sm" data-ic="document"></span> Plan asignado</span>
+        <span style="font-size:11px;color:var(--blue);text-transform:none;letter-spacing:0;font-weight:700">Historial ›</span>
+      </div>
+      <div class="card"><div class="card-bd">
+        <div class="rowb mb10"><div><div class="fb" id="ptd-plan-t">Sin plan</div><div class="fsm tm mt4" id="ptd-plan-s">—</div></div><div class="badge" id="ptd-plan-b" style="background:var(--red-bg);color:var(--red);border-color:var(--red-brd)">Sin plan</div></div>
+        <!-- Subir plan HTML -->
+        <div class="upzone" onclick="triggerUpload()"><div class="ei" style="font-size:24px;margin-bottom:5px;opacity:1"><span class="iq-ic gold" data-ic="upload"></span></div><div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:1px;color:var(--gold);margin-bottom:3px">Subir Plan HTML</div><div style="font-size:11px;color:var(--muted)" id="upsub">Selecciona el HTML generado por Claude</div></div>
+        <input type="file" id="plan-inp" accept=".html" style="display:none" onchange="handleUpload(event)">
+        <button id="ptd-plan-del" onclick="deletePlan()" style="display:none;margin-top:8px;align-items:center;justify-content:center;gap:6px;width:100%;padding:9px 14px;background:var(--red-bg);color:var(--red);border:1px solid var(--red-brd);border-radius:var(--rs);font-size:12px;font-family:'Inter',sans-serif;letter-spacing:.8px;cursor:pointer;transition:background .2s">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px"><path d="M4 7h16M9 7V4h6v3M7 7l1 12h8l1-12"/></svg>
+          ELIMINAR PLAN
+        </button>
+        <div style="height:8px"></div>
+        <button class="btn btn-out" onclick="previewPlan()"><span class="iq-ic sm" data-ic="eye"></span> Ver plan</button>
+      </div></div>
+    </div>
+
+    <!-- ░ TAB: AJUSTES ░ -->
+    <div class="adm-tp" id="atp-cfg" style="padding:0 14px 14px">
+      <!-- Notas internas del Dr. (historial) -->
+      <div class="sl" style="margin-top:16px"><span class="iq-ic" data-ic="note"></span>Notas clínicas</div>
+      <div class="card"><div class="card-bd" style="padding-bottom:10px">
+        <div class="field" style="margin-bottom:8px">
+          <label class="flbl">Nueva nota (visible solo en admin)</label>
+          <textarea id="dr-note-inp" placeholder="ej. Revisar adherencia esta semana. Hablé con ella el martes." style="min-height:56px"></textarea>
+        </div>
+        <button class="btn btn-out btn-sm" onclick="saveDrNote()"><span class="iq-ic sm" data-ic="check"></span> Agregar nota</button>
+        <div id="dr-notes-log" style="margin-top:12px"></div>
+      </div></div>
+      <div class="sl"><span class="iq-ic" data-ic="bell"></span>Notificación</div>
+      <div class="card"><div class="card-bd">
+        <div class="field"><label class="flbl">Mensaje al paciente</label><textarea id="notif-msg" placeholder="ej. Tu plan actualizado está listo. ¡Revísalo!"></textarea></div>
+        <div style="height:5px"></div>
+        <div style="display:flex;gap:7px">
+          <button class="btn btn-out btn-sm" onclick="openMsgTemplates('notif-msg')"><span class="iq-ic sm" data-ic="document"></span> Plantillas</button>
+          <button class="btn btn-gold" onclick="sendNotif()" style="flex:1">Enviar ahora</button>
+        </div>
+      </div></div>
+      <div class="sl"><span class="iq-ic" data-ic="calendar"></span>Recordatorio programado</div>
+      <div class="card"><div class="card-bd">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:10px">
+          <div class="field"><label class="flbl">Fecha</label><input type="date" id="sched-date"></div>
+          <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end"><label class="flbl">Hora (ref)</label><input type="time" id="sched-time" value="08:00"></div>
+        </div>
+        <div class="field"><label class="flbl">Mensaje del recordatorio</label><textarea id="sched-msg" placeholder="ej. Recuerda enviar tu reporte del domingo"></textarea></div>
+        <button class="btn btn-ghost" onclick="saveSchedNotif()" style="margin-top:4px">Programar recordatorio</button>
+        <div id="sched-list" style="margin-top:10px"></div>
+      </div></div>
+      <div class="sl" style="justify-content:space-between"><span style="display:flex;align-items:center;gap:6px"><span class="iq-ic" data-ic="activity"></span>Macros de referencia</span><button type="button" id="mc-calc-toggle-btn" class="btn btn-ghost btn-sm" style="font-size:9px;padding:3px 8px" onclick="const w=G('mc-calc-wrap');const open=w.style.display!=='none';w.style.display=open?'none':'';this.textContent=open?'⚡ Calcular':'✕ Cerrar'">⚡ Calcular</button></div>
+      <div class="card"><div class="card-bd">
+        <!-- Calculadora rápida -->
+        <div id="mc-calc-wrap" style="background:var(--bg3);border:1px solid var(--line);border-radius:var(--rs);padding:10px 12px;margin-bottom:10px;display:none">
+          <div class="fxs tm" style="letter-spacing:1px;margin-bottom:8px;color:var(--gold)">⚡ Calculadora automática</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+            <div class="field" style="margin:0"><label class="flbl">Peso (kg)</label><input type="number" id="mc-c-peso" inputmode="decimal" step="0.1" placeholder="80"></div>
+            <div class="field" style="margin:0"><label class="flbl">% Grasa</label><input type="number" id="mc-c-gc" inputmode="decimal" step="0.1" placeholder="18"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+            <div class="field" style="margin:0"><label class="flbl">Altura (cm)</label><input type="number" id="mc-c-alt" inputmode="numeric" placeholder="175"></div>
+            <div class="field" style="margin:0"><label class="flbl">Actividad</label>
+              <select id="mc-c-act">
+                <option value="1.2">Sedentario</option>
+                <option value="1.375">Ligero (1-3/sem)</option>
+                <option value="1.55" selected>Moderado (3-5/sem)</option>
+                <option value="1.725">Activo (6-7/sem)</option>
+                <option value="1.9">Muy activo</option>
+              </select>
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:8px"><label class="flbl">Objetivo</label>
+            <select id="mc-c-goal">
+              <option value="cut">Corte agresivo (−500 kcal)</option>
+              <option value="cut_mild" selected>Corte moderado (−300 kcal)</option>
+              <option value="maint">Mantenimiento</option>
+              <option value="bulk_mild">Volumen limpio (+200 kcal)</option>
+              <option value="bulk">Volumen (+400 kcal)</option>
+            </select>
+          </div>
+          <button class="btn btn-out btn-sm" onclick="calcMacrosAuto()" style="width:100%"><span class="iq-ic sm" data-ic="activity"></span> Calcular macros</button>
+          <div id="mc-calc-preview" style="display:none;margin-top:8px;padding:8px;background:var(--bg4);border-radius:6px;font-family:'Inter',sans-serif;font-size:10px;color:var(--muted);line-height:1.8"></div>
+        </div>
+        <!-- Aviso referencia -->
+        <div id="mc-ref-banner" style="display:flex;align-items:flex-start;gap:8px;background:var(--gold-bg);border:1px solid var(--gold-brd);border-radius:9px;padding:9px 11px;margin-bottom:10px">
+          <span style="font-size:14px;flex-shrink:0;margin-top:1px">⚡</span>
+          <div>
+            <div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold);margin-bottom:3px">Punto de partida calculado</div>
+            <div style="font-size:11px;color:var(--txt2);line-height:1.6">Los valores se estiman con Mifflin-St Jeor + masa magra. Son una <b style="color:var(--txt)">referencia inicial</b> — ajústalos según contexto clínico, adherencia y respuesta del paciente antes de guardar.</div>
+          </div>
+        </div>
+        <!-- Campos manuales -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+          <div class="field"><label class="flbl">Calorías (kcal)</label><input type="number" id="mc-kcal" inputmode="numeric" placeholder="2000"></div>
+          <div class="field"><label class="flbl">Proteína (g)</label><input type="number" id="mc-prot" inputmode="numeric" placeholder="160"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+          <div class="field"><label class="flbl">Carbohidratos (g)</label><input type="number" id="mc-carbs" inputmode="numeric" placeholder="200"></div>
+          <div class="field"><label class="flbl">Grasas (g)</label><input type="number" id="mc-fat" inputmode="numeric" placeholder="70"></div>
+
+        </div>
+        <div class="field"><label class="flbl">Nota (opcional)</label><input type="text" id="mc-nota" placeholder="ej. Días de entrenamiento"></div>
+        <button class="btn btn-ghost" onclick="saveMacros()" style="margin-top:4px">Guardar macros</button>
+      </div></div>
+      <div class="sl"><span class="iq-ic" data-ic="settings"></span>Configuración</div>
+      <div class="card"><div class="card-bd">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+          <div class="field"><label class="flbl">Semana</label><input type="number" id="week-inp" min="1" max="52" inputmode="numeric"></div>
+          <div class="field"><label class="flbl">Vencimiento</label><input type="date" id="exp-inp"></div>
+        </div>
+        <div class="field"><label class="flbl">Usuario (login)</label><input type="text" id="user-inp" autocapitalize="none"></div>
+        <div class="field">
+          <label class="flbl" style="display:flex;justify-content:space-between;align-items:center">
+            Contraseña
+            <span id="pass-hint" style="font-size:9px;font-family:'Inter',sans-serif;color:var(--gold);letter-spacing:.5px;font-weight:700"></span>
+          </label>
+          <input type="text" id="pass-inp" inputmode="numeric">
+          <div style="font-size:10px;color:var(--muted);margin-top:5px;font-family:'Inter',sans-serif">Formato por defecto: DDMM (ej. 2401 = 24 de enero)</div>
+        </div>
+        <div style="height:7px"></div>
+        <button class="btn btn-ghost" onclick="saveSettings()">Guardar cambios</button>
+      </div></div>
+      <div style="height:7px"></div>
+      <button class="btn btn-danger" onclick="confirmDelete()"><span class="iq-ic sm" data-ic="trash"></span> Eliminar paciente</button>
+      <div style="height:14px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div id="bnav">
+  <div class="ni on" id="ni-home" onclick="goTab('home')"><div class="ni-ic"><span class="iq-ic" data-ic="home"></span></div><div class="ni-lb">Inicio</div><div class="ni-bar"></div><div class="ni-glow"></div></div>
+  <div class="ni" id="ni-plan" onclick="goTab('plan')"><div class="ni-ic"><span class="iq-ic" data-ic="clipboard"></span></div><div class="ni-lb">Plan</div><div class="ni-bar"></div><div class="ni-glow"></div></div>
+  <div class="ni" id="ni-prog" onclick="goTab('prog')"><div class="ni-ic"><span class="iq-ic" data-ic="chart"></span></div><div class="ni-lb">Progreso</div><div class="ni-bar"></div><div class="ni-glow"></div></div>
+  <div class="ni" id="ni-reporte" onclick="goTab('reporte')"><div class="ni-ic"><span class="iq-ic" data-ic="note"></span><div class="ni-pip" id="ni-rep-pip"></div></div><div class="ni-lb">Reporte</div><div class="ni-bar"></div><div class="ni-glow"></div></div>
+</div>
+
+<!-- ███ MODALS ███ -->
+
+<!-- Add Progress -->
+<div class="mover" id="m-addprog"><div class="msheet">
+  <div class="mhandle"></div><div class="mtitle">Registrar pesaje</div><div class="msub">Ingresa tu peso de hoy</div>
+  <div class="field"><label class="flbl">Peso corporal (kg)</label><input type="text" id="pw-inp" placeholder="ej. 72.5" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" autocomplete="off"></div>
+  <div class="field"><label class="flbl">Nota (opcional)</label><textarea id="pn-inp" placeholder="Cómo te sientes hoy..."></textarea></div>
+  <div style="height:4px"></div>
+  <button class="btn btn-gold" onclick="saveProg();haptic('success')">Guardar pesaje</button>
+  <div style="height:8px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-addprog')">Cancelar</button>
+</div></div>
+
+<!-- Add Photo Set (inside progreso) -->
+<div class="mover" id="m-addfotos"><div class="msheet">
+  <div class="mhandle"></div><div class="mtitle">Nuevo set de fotos</div><div class="msub">3 ángulos · Frente · Lateral · Posterior</div>
+  <div class="field"><label class="flbl">Nota / Semana</label><input type="text" id="foto-note" placeholder="ej. Semana 4 — CP1"></div>
+  <div class="photo-strip" style="margin:14px 0">
+    <div class="photo-slot photo-slot-empty" id="pz-front" onclick="triggerPhoto('front')"><div class="ps-ic"><span class="iq-ic" data-ic="camera"></span></div><div class="ps-lb">Frente</div></div>
+    <div class="photo-slot photo-slot-empty" id="pz-side" onclick="triggerPhoto('side')"><div class="ps-ic"><span class="iq-ic" data-ic="camera"></span></div><div class="ps-lb">Lateral</div></div>
+    <div class="photo-slot photo-slot-empty" id="pz-back" onclick="triggerPhoto('back')"><div class="ps-ic"><span class="iq-ic" data-ic="camera"></span></div><div class="ps-lb">Posterior</div></div>
+  </div>
+  <input type="file" id="photo-inp" accept="image/*" style="display:none" onchange="handlePhoto(event)">
+  <button class="btn btn-gold" onclick="savePhotoSet()">Guardar set</button>
+  <div style="height:8px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-addfotos');resetPhotoForm()">Cancelar</button>
+</div></div>
+
+<!-- New Patient -->
+<div class="mover" id="m-newpt"><div class="msheet">
+  <div class="mhandle"></div>
+  <div class="mtitle">Nuevo paciente</div>
+  <div class="msub">Completa el perfil clínico inicial</div>
+
+  <!-- Progress bar -->
+  <div class="form-progress"><div class="form-progress-fill" id="np-prog-fill"></div></div>
+
+  <!-- Avatar preview -->
+  <div class="form-av-preview">
+    <div class="form-av-circle" id="np-av-circle">?</div>
+    <div class="form-av-info">
+      <div class="form-av-name" id="np-av-name">Nombre del paciente</div>
+      <div class="form-av-user" id="np-av-user">usuario.apellido</div>
+    </div>
+  </div>
+
+  <!-- ① DATOS BÁSICOS -->
+  <div class="form-section">
+    <div class="form-section-ic gold"><span class="iq-ic sm gold" data-ic="user"></span></div>
+    <div><div class="form-section-title">Datos básicos</div><div class="form-section-sub">Identidad y acceso</div></div>
+  </div>
+  <div class="field"><label class="flbl">Nombre completo</label><input type="text" id="np-name" placeholder="Nombre Apellido" oninput="npLivePreview()"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+    <div class="field"><label class="flbl">Usuario (auto)</label><input type="text" id="np-user" placeholder="nombre.apellido" readonly style="opacity:.55;cursor:default"></div>
+    <div class="field">
+      <label class="flbl">Fecha de nacimiento</label>
+      <input type="date" id="np-nacimiento" autocomplete="off" onchange="npUpdateEdad();npProgressBar()">
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+    <div class="field">
+      <label class="flbl">Edad</label>
+      <div class="edad-badge" id="np-edad-display">
+        <span class="edad-badge-val" id="np-edad-val">—</span>
+        <span class="edad-badge-unit" id="np-edad-unit"></span>
+      </div>
+    </div>
+    <div class="field"><label class="flbl">Vencimiento membresía</label><input type="date" id="np-exp"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+    <div class="field"><label class="flbl">Semana actual</label><input type="number" id="np-wk" value="1" min="1" max="52" inputmode="numeric"></div>
+  </div>
+
+  <!-- ② DATOS CLÍNICOS -->
+  <div class="form-section">
+    <div class="form-section-ic red"><span class="iq-ic sm red" data-ic="alert"></span></div>
+    <div><div class="form-section-title">Datos clínicos</div><div class="form-section-sub">Lesiones, patologías y medicamentos</div></div>
+  </div>
+  <div class="field field-clinical"><label class="flbl">Patologías / condiciones</label><textarea id="np-patologias" placeholder="ej. Hipotiroidismo, HTA controlada..."></textarea></div>
+  <div class="field field-clinical"><label class="flbl">Lesiones activas</label><textarea id="np-lesiones" placeholder="ej. Tendinitis hombro derecho..."></textarea></div>
+  <div class="field field-clinical"><label class="flbl">Alergias e intolerancias</label><textarea id="np-restricciones" placeholder="ej. Intolerancia al gluten, alergia a mariscos..."></textarea></div>
+  <div class="field field-clinical"><label class="flbl">Medicamentos</label><textarea id="np-medicamentos" placeholder="ej. Levotiroxina 50mcg diarios..."></textarea></div>
+
+  <!-- ③ DATOS ANTROPOMÉTRICOS -->
+  <div class="form-section">
+    <div class="form-section-ic teal"><span class="iq-ic sm green" data-ic="activity"></span></div>
+    <div><div class="form-section-title">Datos antropométricos</div><div class="form-section-sub">Medidas, composición y objetivo</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+    <div class="field field-unit">
+      <label class="flbl">Talla</label>
+      <input type="text" id="np-altura" placeholder="165" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" autocomplete="off" oninput="npProgressBar()">
+      <span class="field-unit-label">cm</span>
+    </div>
+    <div class="field field-unit">
+      <label class="flbl">Peso actual</label>
+      <input type="text" id="np-w" placeholder="70.0" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" autocomplete="off" oninput="npProgressBar()">
+      <span class="field-unit-label">kg</span>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+    <div class="field field-unit">
+      <label class="flbl">% Grasa corporal</label>
+      <input type="text" id="np-grasa" placeholder="24.5" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" autocomplete="off" oninput="npProgressBar()">
+      <span class="field-unit-label">%</span>
+    </div>
+    <div class="field field-unit">
+      <label class="flbl">Peso meta</label>
+      <input type="text" id="np-pesoMeta" placeholder="65.0" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" autocomplete="off">
+      <span class="field-unit-label">kg</span>
+    </div>
+  </div>
+  <div class="field">
+    <label class="flbl">Objetivo del programa</label>
+    <div class="goal-select-wrap">
+      <select id="np-goal" class="field" style="width:100%;background:var(--bg3);border:1px solid var(--line2);border-radius:var(--rs);padding:11px 13px;color:var(--txt);font-family:'Barlow',sans-serif;font-size:13px;-webkit-appearance:none;outline:none;margin:0" onchange="npGoalChip(this)">
+        <option value="Recomposición corporal" data-chip="rec">Recomposición corporal</option>
+        <option value="Corte / pérdida de grasa" data-chip="cut">Corte / pérdida de grasa</option>
+        <option value="Volumen / ganancia muscular" data-chip="vol">Volumen / ganancia muscular</option>
+        <option value="Rendimiento deportivo" data-chip="dep">Rendimiento deportivo</option>
+        <option value="Salud metabólica" data-chip="sal">Salud metabólica</option>
+      </select>
+    </div>
+    <div id="np-goal-chip"></div>
+  </div>
+
+  <!-- ④ NOTAS -->
+  <div class="form-section">
+    <div class="form-section-ic blue"><span class="iq-ic sm blue" data-ic="note"></span></div>
+    <div><div class="form-section-title">Notas</div><div class="form-section-sub">Observaciones iniciales del Dr.</div></div>
+  </div>
+  <div class="field"><label class="flbl">Notas del Dr.</label><textarea id="np-notas" placeholder="Observaciones iniciales, contexto relevante..."></textarea></div>
+
+  <div style="height:8px"></div>
+  <button class="btn btn-gold" onclick="createPt()"><span class="iq-ic sm" data-ic="user"></span> Crear paciente</button>
+  <div style="height:8px"></div>
+  <button class="btn btn-ghost" onclick="resetNpForm();closeM('m-newpt')">Cancelar</button>
+</div></div>
+
+<!-- Profile patient -->
+<!-- ████ MODAL SETTINGS (engrane) ████ -->
+<div class="mover" id="m-settings"><div class="msheet">
+  <div class="mhandle"></div>
+
+  <!-- Header -->
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+    <div style="width:36px;height:36px;border-radius:10px;background:var(--bg3);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <span class="iq-ic" data-ic="settings" style="width:17px;height:17px;color:var(--muted)"></span>
+    </div>
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase">Ajustes</div>
+      <div style="font-family:'Inter',sans-serif;font-size:9px;color:var(--muted)">Seguridad · Preferencias</div>
+    </div>
+  </div>
+
+  <!-- Sección PIN -->
+  <div style="font-family:'Inter',sans-serif;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Seguridad</div>
+  <div class="card" style="margin-bottom:14px"><div class="card-bd" style="display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:30px;height:30px;border-radius:8px;background:var(--blue-bg);border:1px solid var(--blue-brd);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <span class="iq-ic sm" data-ic="key" style="color:var(--blue)"></span>
+      </div>
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:700;color:var(--txt)">PIN de acceso</div>
+        <div style="font-family:'Inter',sans-serif;font-size:9px;color:var(--muted)" id="pin-status-lbl">Cargando...</div>
+      </div>
+      <button type="button" class="btn btn-out btn-sm" id="pin-action-btn" onclick="settingsPinAction()" style="flex-shrink:0">—</button>
+    </div>
+  </div></div>
+
+  <!-- Sección info -->
+  <div style="font-family:'Inter',sans-serif;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">App</div>
+  <div class="card" style="margin-bottom:14px"><div class="card-bd" style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="font-size:12px;color:var(--txt2)">Versión</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:var(--gold)">IRONQX v2.0</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="font-size:12px;color:var(--txt2)">Dr. a cargo</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:var(--txt)">Dr. Arévalo</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="font-size:12px;color:var(--txt2)">Usuario</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:var(--txt)" id="settings-user">—</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="font-size:12px;color:var(--txt2)">Última sync</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--green)" id="last-sync-lbl">—</div>
+    </div>
+  </div></div><!-- /card-bd /card -->
+
+  <!-- Cerrar sesión -->
+  <button class="btn btn-ghost" onclick="doLogout()" style="color:var(--red);border-color:var(--red-brd);background:var(--red-bg);margin-top:4px">
+    <span class="iq-ic sm" data-ic="arrow-left"></span> Cerrar sesión
+  </button>
+  <div style="height:6px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-settings')">Cancelar</button>
+</div></div><!-- /msheet /mover -->
+
+<!-- ████ MODAL LOGROS (trofeo) ████ -->
+<div class="mover" id="m-logros"><div class="msheet">
+  <div class="mhandle"></div>
+  <!-- Header -->
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+    <div style="display:flex;align-items:center;gap:9px">
+      <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,rgba(212,146,14,.18),rgba(212,146,14,.06));border:1px solid rgba(212,146,14,.3);display:flex;align-items:center;justify-content:center">
+        <span class="iq-ic gold" data-ic="trophy" style="width:18px;height:18px"></span>
+      </div>
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase">Logros</div>
+        <div style="font-family:'Inter',sans-serif;font-size:9px;color:var(--muted)" id="mlogros-sub">—</div>
+      </div>
+    </div>
+    <button type="button" onclick="openLogros()" style="font-family:'Inter',sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);background:rgba(212,146,14,.08);border:1px solid rgba(212,146,14,.25);border-radius:8px;padding:5px 10px;cursor:pointer">Ver todos →</button>
+  </div>
+  <!-- Master bar -->
+  <div class="ach-master-bar" style="margin-bottom:10px"><div class="ach-master-fill" style="width:0%" id="mlogros-master-fill"></div></div>
+  <!-- Preview grid -->
+  <div id="logros-preview" style="margin-bottom:4px"></div>
+  <!-- Cache oculto -->
+  <div id="logros-wrap" style="display:none"></div>
+  <div style="height:8px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-logros')">Cerrar</button>
+</div></div>
+
+<div class="mover" id="m-profile"><div class="msheet" style="padding-bottom:20px">
+  <div class="mhandle"></div>
+
+  <!-- ── PLAYER CARD HERO ── -->
+  <div class="pc-hero">
+    <div class="pc-av-ring">
+      <svg class="pc-ring-svg" viewBox="0 0 88 88">
+        <circle cx="44" cy="44" r="38" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="4"/>
+        <circle cx="44" cy="44" r="38" fill="none" stroke="url(#pcRingGrad)" stroke-width="4"
+          stroke-linecap="round" id="pc-ring-circle"
+          stroke-dasharray="238.76" stroke-dashoffset="238.76"
+          transform="rotate(-90 44 44)"/>
+        <defs>
+          <linearGradient id="pcRingGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f2c84a"/>
+            <stop offset="100%" stop-color="#d4920e"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="av av-xl pulse" id="mp-av" style="position:absolute;inset:8px;width:auto;height:auto">?</div>
+      <div class="pc-level-badge" id="pc-level">Sem 1</div>
+    </div>
+    <div class="pc-hero-body">
+      <div class="pc-name" id="mp-name">—</div>
+      <div class="pc-goal" id="mp-goal">—</div>
+      <div style="margin-top:6px;display:flex;align-items:center;gap:7px">
+        <div id="mp-pay-pill"></div>
+        <div id="mp-streak-pill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STATS GRID (estilo RPG) ── -->
+  <div class="pc-stats" id="pc-stats-grid">
+    <!-- filled by renderPlayerCard() -->
+  </div>
+
+  <!-- ── XP BAR ── -->
+  <div class="pc-xp-wrap">
+    <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+      <div style="font-family:'Inter',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)">Progreso del programa</div>
+      <div style="font-family:'Inter',sans-serif;font-size:8.5px;color:var(--muted)" id="pc-xp-lbl">—</div>
+    </div>
+    <div style="background:rgba(255,255,255,.05);border-radius:99px;height:6px;overflow:hidden">
+      <div id="pc-xp-fill" style="height:100%;border-radius:99px;width:0%;background:linear-gradient(90deg,#d4920e,#f2c84a);transition:width 1s cubic-bezier(.32,1,.36,1)"></div>
+    </div>
+  </div>
+
+  <div style="height:6px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-profile')">Cerrar</button>
+</div></div>
+
+<!-- Notifications -->
+<div class="mover" id="m-notif"><div class="msheet">
+  <div class="mhandle"></div><div class="mtitle">Mensajes</div><div class="msub">Conversación con el Dr. Arévalo</div>
+  <div id="notif-list"></div>
+  <div style="height:9px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-notif')">Cerrar</button>
+</div></div>
+
+<!-- Inbox (admin) -->
+<div class="mover" id="m-inbox"><div class="msheet">
+  <div class="mhandle"></div><div class="mtitle">Bandeja de reportes</div><div class="msub">Reportes semanales pendientes de respuesta</div>
+  <div id="inbox-list"></div>
+  <div style="height:9px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-inbox')">Cerrar</button>
+</div></div>
+
+<!-- Reply to report (admin) -->
+<div class="mover" id="m-reply"><div class="msheet">
+  <div class="mhandle"></div><div class="mtitle">Responder reporte</div><div class="msub" id="reply-sub">Semana — Paciente</div>
+  <div id="reply-report-preview"></div>
+  <div class="sep"></div>
+  <div class="field">
+    <label class="flbl">Respuesta rápida</label>
+    <div class="quick-chips">
+      <button type="button" class="quick-chip" onclick="insertChip('Excelente semana, sigue así 💪')">Excelente semana</button>
+      <button type="button" class="quick-chip" onclick="insertChip('Buen progreso. Vamos bien encaminados.')">Buen progreso</button>
+      <button type="button" class="quick-chip" onclick="insertChip('Subir cardio esta semana, mínimo 3 sesiones.')">Subir cardio</button>
+      <button type="button" class="quick-chip" onclick="insertChip('Revisemos los macros, ajustamos proteína.')">Revisar macros</button>
+      <button type="button" class="quick-chip" onclick="insertChip('Necesito que te enfoques más en la adherencia.')">Mejorar adherencia</button>
+      <button type="button" class="quick-chip" onclick="insertChip('Hablemos esta semana para ajustar el plan.')">Agendar llamada</button>
+    </div>
+  </div>
+  <div class="field"><label class="flbl">Tu respuesta completa</label><textarea id="reply-txt" placeholder="ej. Excelente semana, noto que bajaste bien los carbohidratos. Para la próxima semana ajustamos las calorías..."></textarea></div>
+  <div style="height:4px"></div>
+  <button class="btn btn-gold" onclick="submitReply()">Enviar respuesta →</button>
+  <div style="height:8px"></div>
+  <button class="btn btn-ghost btn-sm" onclick="openMsgTemplates('reply-txt')" style="margin-bottom:4px"><span class="iq-ic sm" data-ic="document"></span> Usar plantilla</button>
+  <button class="btn btn-ghost" onclick="closeM('m-reply')">Cancelar</button>
+</div></div>
+
+<!-- Plantillas de mensajes -->
+<div class="mover" id="m-msgtpl"><div class="msheet">
+  <div class="mhandle"></div><div class="mtitle">Plantillas</div><div class="msub">Respuestas y mensajes guardados</div>
+  <div class="field">
+    <label class="flbl">Nueva plantilla</label>
+    <input type="text" id="tpl-name-inp" placeholder="ej. Revisión semanal" style="margin-bottom:7px">
+    <textarea id="tpl-msg-inp" placeholder="Texto de la plantilla..." style="min-height:64px"></textarea>
+  </div>
+  <button class="btn btn-out btn-sm" onclick="saveMsgTemplate()"><span class="iq-ic sm" data-ic="check"></span> Guardar plantilla</button>
+  <div class="sep"></div>
+  <div class="sl" style="margin:0 0 4px"><span class="iq-ic" data-ic="document"></span>Plantillas guardadas</div>
+  <div id="tpl-list" class="tpl-list"></div>
+  <div style="height:8px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-msgtpl')">Cerrar</button>
+</div></div>
+
+<!-- Patient actions -->
+<div class="mover" id="m-ptact"><div class="msheet">
+  <div class="mhandle"></div><div class="mtitle" id="ptact-name">Acciones</div>
+  <div style="height:11px"></div>
+  <button class="btn btn-out" onclick="previewPlan();closeM('m-ptact')"><span class="iq-ic sm" data-ic="clipboard"></span> Ver plan en nueva pestaña</button>
+  <div style="height:8px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-ptact')">Cerrar</button>
+</div></div>
+
+<!-- Plan history -->
+<div class="mover" id="m-planvers"><div class="msheet">
+  <div class="mhandle"></div><div class="mtitle">Historial de planes</div><div class="msub">Versiones cargadas</div>
+  <div id="plan-vers-list"></div>
+  <div style="height:9px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-planvers')">Cerrar</button>
+</div></div>
+
+<!-- Ficha clinica -->
+<div class="mover" id="m-ficha"><div class="msheet">
+  <div class="mhandle"></div>
+  <div class="mtitle">Datos antropométricos</div>
+  <div class="msub">Actualiza medidas y composición corporal</div>
+
+  <!-- ① MEDIDAS -->
+  <div class="form-section" style="margin-top:6px">
+    <div class="form-section-ic teal"><span class="iq-ic sm green" data-ic="activity"></span></div>
+    <div><div class="form-section-title">Medidas corporales</div><div class="form-section-sub">Talla, peso y composición</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+    <div class="field field-unit">
+      <label class="flbl">Talla</label>
+      <input type="text" id="fc-altura" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" placeholder="165" autocomplete="off" oninput="fcUpdateImc()">
+      <span class="field-unit-label">cm</span>
+    </div>
+    <div class="field field-unit">
+      <label class="flbl">Peso actual</label>
+      <input type="text" id="fc-peso" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" placeholder="70.0" autocomplete="off" oninput="fcUpdateImc()">
+      <span class="field-unit-label">kg</span>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+    <div class="field">
+      <label class="flbl">IMC (automático)</label>
+      <div class="edad-badge" id="fc-imc-display">
+        <span class="edad-badge-val" id="fc-imc-val">—</span>
+        <span class="edad-badge-unit" id="fc-imc-unit"></span>
+      </div>
+    </div>
+    <div class="field field-unit">
+      <label class="flbl">% Grasa corporal</label>
+      <input type="text" id="fc-grasa" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" placeholder="24.5" autocomplete="off">
+      <span class="field-unit-label">%</span>
+    </div>
+  </div>
+
+  <!-- ② OBJETIVO -->
+  <div class="form-section">
+    <div class="form-section-ic gold"><span class="iq-ic sm gold" data-ic="spark"></span></div>
+    <div><div class="form-section-title">Objetivo</div><div class="form-section-sub">Meta y dirección del programa</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+    <div class="field">
+      <label class="flbl">Objetivo del programa</label>
+      <select id="fc-goal" style="width:100%;background:var(--bg3);border:1px solid var(--line2);border-radius:var(--rs);padding:11px 13px;color:var(--txt);font-family:'Barlow',sans-serif;font-size:13px;-webkit-appearance:none;outline:none">
+        <option value="Recomposición corporal">Recomposición corporal</option>
+        <option value="Corte / pérdida de grasa">Corte / pérdida de grasa</option>
+        <option value="Volumen / ganancia muscular">Volumen / ganancia muscular</option>
+        <option value="Rendimiento deportivo">Rendimiento deportivo</option>
+        <option value="Salud metabólica">Salud metabólica</option>
+      </select>
+    </div>
+    <div class="field field-unit">
+      <label class="flbl">Peso meta</label>
+      <input type="text" id="fc-pesoMeta" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" placeholder="65.0" autocomplete="off">
+      <span class="field-unit-label">kg</span>
+    </div>
+  </div>
+
+  <div style="height:8px"></div>
+  <button class="btn btn-gold" onclick="saveFicha()"><span class="iq-ic sm" data-ic="check"></span> Guardar medidas</button>
+  <div style="height:8px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-ficha')">Cancelar</button>
+</div></div>
+
+<!-- Dr profile -->
+<div class="mover" id="m-drprofile"><div class="msheet">
+  <div class="mhandle"></div>
+  <div style="text-align:center;margin-bottom:16px">
+    <div class="av av-xl av-dr" style="margin:0 auto 10px;font-size:24px">DA</div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900">Dr. Daniel Arévalo</div>
+    <div class="fxs mt4" style="color:var(--muted)">Superusuario · <span style="background:linear-gradient(135deg,#9eaab8,#fff,#b0bcc8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700">IRON</span><span style="background:linear-gradient(135deg,#f2c84a,#d4920e,#9a6508);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700">QX</span></div>
+    <div style="margin-top:8px"><span class="badge b-gold"><span class="iq-ic sm" data-ic="spark"></span> Administrador</span></div>
+  </div>
+  <div class="sep"></div>
+  <div style="margin-bottom:14px">
+    <div class="info-row"><div class="info-k">Sistema</div><div class="info-v">IronQx</div></div>
+    <div class="info-row"><div class="info-k">Versión</div><div class="info-v">4.0 · Build 2026</div></div>
+  </div>
+  <div class="sep"></div>
+  <button class="btn btn-ghost" style="margin-bottom:8px" onclick="closeM('m-drprofile');openDrPatientProfile()"><span class="iq-ic sm" data-ic="activity"></span> Mi perfil como paciente</button>
+  <button class="btn btn-ghost" style="margin-bottom:8px" onclick="closeM('m-drprofile');showChangePass()"><span class="iq-ic sm" data-ic="lock"></span> Cambiar contraseña</button>
+  <button class="btn btn-ghost" style="margin-bottom:8px" onclick="closeM('m-drprofile');exportAllData()"><span class="iq-ic sm" data-ic="upload"></span> Exportar datos (JSON)</button>
+  <button class="btn btn-ghost" onclick="doLogout()">Cerrar sesión del panel</button>
+</div></div>
+
+<!-- Change Admin Password -->
+<div class="mover" id="m-changepass"><div class="msheet">
+  <div class="mhandle"></div>
+  <div class="mtitle">Cambiar contraseña</div>
+  <div class="msub">Solo afecta el acceso del Dr. al panel</div>
+  <div class="sep"></div>
+  <div class="field" style="margin-bottom:12px">
+    <label class="flabel">Contraseña actual</label>
+    <input type="password" id="cp-current" placeholder="Tu contraseña actual">
+  </div>
+  <div class="field" style="margin-bottom:12px">
+    <label class="flabel">Nueva contraseña</label>
+    <input type="password" id="cp-new" placeholder="Mínimo 6 caracteres">
+  </div>
+  <div class="field" style="margin-bottom:18px">
+    <label class="flabel">Confirmar contraseña</label>
+    <input type="password" id="cp-confirm" placeholder="Repite la nueva contraseña">
+  </div>
+  <button class="btn btn-gold" onclick="saveChangePass()">Guardar contraseña</button>
+  <div style="height:8px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-changepass')">Cancelar</button>
+</div></div>
+
+<!-- Photo Compare -->
+<div class="mover" id="m-compare"><div class="msheet">
+  <div class="mhandle"></div><div class="mtitle">Comparar progreso</div><div class="msub">Desliza para comparar dos sets</div>
+  <div class="compare-sel" id="cmp-sel-wrap"></div>
+  <div id="compare-content"></div>
+  <div style="height:10px"></div>
+  <button class="btn btn-ghost" onclick="closeM('m-compare')">Cerrar</button>
+</div></div>
+
+<!-- Chart tooltip -->
+<div class="chart-tip" id="chart-tip-el"><div class="chart-tip-val" id="ctt-val">—</div><div class="chart-tip-date" id="ctt-date">—</div></div>
+
+<!-- ████ PLAN FULLSCREEN PORTAL ████ -->
+<div id="plan-fs-portal" style="display:none;position:fixed;inset:0;z-index:99999;background:#080a0d;flex-direction:column">
+  <!-- HUD — logo + versión, se auto-oculta tras 3s -->
+  <div id="plan-fs-hud" style="position:absolute;top:0;left:0;right:0;z-index:3;pointer-events:none;transition:opacity .4s">
+    <div style="display:flex;align-items:center;padding:12px 14px;padding-top:calc(12px + var(--safe-t));background:linear-gradient(to bottom,rgba(8,10,13,.92) 0%,rgba(8,10,13,0) 100%);pointer-events:none">
+      <div style="display:flex;align-items:center;gap:8px">
+        <svg style="height:16px;width:auto;opacity:.7" viewBox="0 0 58 28" fill="none"><defs><linearGradient id="fsh-go" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f2c84a"/><stop offset="100%" stop-color="#d4920e"/></linearGradient></defs><text x="1" y="22" font-family="'Barlow Condensed',sans-serif" font-size="24" font-weight="900" fill="rgba(255,255,255,.5)">I</text><text x="13" y="22" font-family="'Barlow Condensed',sans-serif" font-size="24" font-weight="900" letter-spacing="-1" fill="url(#fsh-go)">QX</text></svg>
+        <div style="font-size:9px;color:rgba(255,255,255,.4);font-family:'Inter',sans-serif" id="plan-fs-ver">—</div>
+      </div>
+    </div>
+  </div>
+  <!-- Botón X — FUERA del HUD para que nunca le afecte el fade de opacidad -->
+  <button id="plan-fs-close-btn" onclick="closePlanFS()" style="position:absolute;top:calc(10px + var(--safe-t,0px));right:14px;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.18);border-radius:50%;width:38px;height:38px;cursor:pointer;color:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:opacity .3s;opacity:1" title="Cerrar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="width:16px;height:16px"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <iframe id="plan-fs-frame" sandbox="allow-scripts allow-same-origin" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;background:#080a0d;z-index:1"></iframe>
+</div>
+
+<!-- ░ JS Modules — Classic scripts, load order matters ░ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/00b-supabase-config.js?v=202603101552"></script>
+<script src="js/00-config.js?v=202603101552"></script>
+<script src="js/01-storage.js?v=202603101552"></script>
+<script src="js/02-utils.js?v=202603101552"></script>
+<script src="js/02b-supabase-sync.js?v=202603101552"></script>
+<script src="js/03-seed.js?v=202603101552"></script>
+<script src="js/04-ui.js?v=202603101552"></script>
+<script src="js/06-auth.js?v=202603101552"></script>
+<script src="js/07-patients.js?v=202603101552"></script>
+<script src="js/07b-ficha.js?v=202603101552"></script>
+<script src="js/07c-forms.js?v=202603101552"></script>
+<script src="js/07d-navlive.js?v=202603101552"></script>
+<script src="js/08-metrics.js?v=202603101552"></script>
+<script src="js/08b-charts.js?v=202603101552"></script>
+<script src="js/08c-donut.js?v=202603101552"></script>
+<script src="js/08d-compchart.js?v=202603101552"></script>
+<script src="js/08e-misc.js?v=202603101552"></script>
+<script src="js/08f-macros.js?v=202603101552"></script>
+<script src="js/09-adherence.js?v=202603101552"></script>
+<script src="js/10-progress.js?v=202603101552"></script>
+<script src="js/11-reports.js?v=202603101552"></script>
+<script src="js/12-messaging.js?v=202603101552"></script>
+<script src="js/13-logros.js?v=202603101552"></script>
+<script src="js/13b-logros.js?v=202603101552"></script>
+<script src="js/14-admin.js?v=202603101552"></script>
+<script src="js/15-trends.js?v=202603101552"></script>
+<script src="js/16-gestures.js?v=202603101552"></script>
+<script src="js/17-biometrics.js?v=202603101552"></script>
+<script src="js/18-onboarding.js?v=202603101552"></script>
+<script src="js/19-init.js?v=202603101552"></script>
+
+</body>
+</html>
